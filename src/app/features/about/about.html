@@ -1,0 +1,57 @@
+<div class="px-5 lg:px-40">
+  <div>
+    <small class="text-muted"><a href="/">Home</a></small>
+    &minus;
+    <small class="font-bold">About Us</small>
+  </div>
+
+  <h3 class="text-2xl font-bold mb-3">About Us</h3>
+
+  <div class="flex gap-10 mb-20 flex-col lg:flex-row justify-between">
+    <div class="flex-1/2">
+      <p class="text-muted-foreground">
+        <strong class="text-primary">Grupo Fadiar</strong> Sit amet consectetur. At tristique est adipiscing
+        pellentesque vel sit id at.
+        Malesuada congue
+        bibendum pretium faucibus orci sit urna. Turpis mattis tortor eget egestas diam natoque ultrices ornare lectus.
+        Tortor viverra condimentum vestibulum commodo. Sed proin dictum risus in nam.
+        <br><br>
+        Sit amet consectetur. At tristique est adipiscing pellentesque vel sit id at. Malesuada congue bibendum pretium
+        faucibus orci sit urna. Turpis mattis tortor eget egestas diam natoque ultrices ornare lectus. Tortor viverra
+        condimentum vestibulum commodo. Sed proin dictum risus in nam.
+        <br><br>
+        Sit amet consectetur. At tristique est adipiscing pellentesque vel sit id at. Malesuada congue bibendum pretium
+        faucibus orci sit urna. Turpis mattis tortor eget egestas diam natoque ultrices ornare lectus. Tortor viverra
+        condimentum vestibulum commodo. Sed proin dictum risus in nam. Sit amet consectetur. At tristique est adipiscing
+        pellentesque vel sit id at. Malesuada congue bibendum pretium faucibus orci sit urna. Turpis mattis tortor eget
+        egestas diam natoque ultrices ornare lectus. Tortor viverra condimentum vestibulum commodo. Sed proin dictum
+        risus
+        in nam.
+        <br><br>
+        Para más información sobre la empresa matriz consulte el siguiente sitio web: <a href="www.fadiar.com"
+                                                                                         class="text-accent">www.fadiar.com</a>
+      </p>
+    </div>
+
+    <div class="flex-1/2 grow relative">
+      <img ngSrc="assets/about-image.png" class="object-contain" alt="about-image" fill>
+    </div>
+  </div>
+
+  <div class="bg-slate-100 p-5 rounded-xl flex flex-col lg:flex-row gap-10 mb-4">
+    @for (info of cardInfo; track $index) {
+      <div class="bg-slate-200 rounded-md p-4 flex-[20%]">
+        <h4 class="font-extrabold text-2xl mb-3">{{ info.title }}</h4>
+        <div class="text-black text-sm font-light">{{ info.description }}</div>
+      </div>
+    }
+  </div>
+
+  <app-download-banner/>
+</div>
+
+<app-hero-2/>
+
+<div class="px-5 lg:px-40">
+  <app-latest-products/>
+</div>

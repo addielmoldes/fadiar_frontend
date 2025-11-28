@@ -1,0 +1,19 @@
+<ol class="flex justify-center mb-10">
+  @for (step of steps; track $index) {
+    <li class="flex flex-col items-center gap-3 basis-64">
+      <div
+        [class]="`flex items-center w-full after:w-full before:w-full
+        ${!$last && (active() >= $index ? 'after:border after:border-accent' : 'after:border after:border-slate-100')}
+        ${!$first && (active() >= $index ? 'before:border before:border-accent' : 'before:border before:border-slate-100')}`"
+      >
+        <div
+          [class]="`p-4 border-2 rounded-full
+          ${active() >= $index ? 'border-accent' : 'bg-slate-100 border-slate-100 text-muted'}`"
+        >
+          <i-lucide [name]="step.icon"/>
+        </div>
+      </div>
+      <span class="font-medium">{{ step.name }}</span>
+    </li>
+  }
+</ol>

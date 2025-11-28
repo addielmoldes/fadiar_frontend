@@ -1,0 +1,78 @@
+<form [formGroup]="userDataForm" (ngSubmit)="submit()" class="mb-10">
+  <div class="flex justify-between">
+    <h4 class="font-bold mb-5">Datos personales</h4>
+    <app-user-submit-button/>
+  </div>
+
+  <div class="grid md:grid-cols-2 items-baseline gap-5">
+    <z-form-field>
+      <label z-form-label zRequired for="name-field">Nombre</label>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="name"
+               id="name-field"
+               placeholder="Nombre"
+               type="text"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (name.hasError('required') && name.touched) {
+        <z-form-message zType="error">El campo nombre es requerido</z-form-message>
+      }
+    </z-form-field>
+
+    <z-form-field>
+      <label z-form-label zRequired for="last-name-field">Apellidos</label>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="lastName"
+               id="last-name-field"
+               placeholder="Apellidos"
+               type="text"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (lastName.hasError('required') && lastName.touched) {
+        <z-form-message zType="error">El campo apellidos es requerido</z-form-message>
+      }
+    </z-form-field>
+
+    <z-form-field>
+      <label z-form-label zRequired for="phone-field">Teléfono</label>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="phoneNumber"
+               id="phone-field"
+               inputmode="tel"
+               placeholder="Teléfono"
+               type="tel"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (phoneNumber.hasError('required') && phoneNumber.touched) {
+        <z-form-message zType="error">El campo teléfono es requerido</z-form-message>
+      }
+    </z-form-field>
+
+    <z-form-field>
+      <label z-form-label zRequired for="email-field">Correo Electrónico</label>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="email"
+               id="email-field"
+               inputmode="email"
+               placeholder="Correo"
+               type="email"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (email.touched) {
+        @if (email.hasError('required')) {
+          <z-form-message zType="error">El campo correo es requerido</z-form-message>
+        } @else if (email.hasError('email')) {
+          <z-form-message zType="error">El correo es incorrecto</z-form-message>
+        }
+      }
+    </z-form-field>
+  </div>
+</form>

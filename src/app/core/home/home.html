@@ -1,0 +1,48 @@
+<app-hero/>
+<section>
+  <div class="px-5 lg:px-40 my-10">
+    <div class="py-10">
+      <h5 class="font-bold">Entra y consulta</h5>
+      <h4 class="font-bold text-accent text-xl mb-4">Categorías destacadas</h4>
+
+      <div class="flex flex-col lg:flex-row justify-between gap-5">
+        <div class="relative min-h-[350px] py-16 basis-1/2">
+          <div class="w-1/2 md:w-1/5 lg:w-2/5">
+            <h5 class="font-bold mb-2">Ventiladores</h5>
+            <div class="mb-3">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit scelerisque, blandit duis
+              sapien.
+            </div>
+            <button z-button>Ver más <i z-icon zType="arrow-right"></i></button>
+          </div>
+
+          <img ngSrc="assets/card-background-1.png" class="object-contain !right-0" alt="card-image" fill>
+        </div>
+
+        <div class="relative min-h-[350px] py-16 basis-1/2">
+          <div class="z-10 w-1/2 md:w-1/5 lg:w-2/5">
+            <h5 class="font-bold mb-2">Refrigeradores y Neveras</h5>
+            <div class="mb-3">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit scelerisque, blandit duis
+              sapien.
+            </div>
+            <button z-button>Ver más <i z-icon zType="arrow-right"></i></button>
+          </div>
+
+          <img ngSrc="assets/card-background-2.png" class="object-contain !right-0" alt="card-image" fill>
+        </div>
+      </div>
+    </div>
+
+    @if (showBentoGrid) {
+      <app-bento-grid/>
+    } @else {
+      <app-latest-products/>
+    }
+
+  </div>
+  <app-hero-3/>
+</section>
+
+<div class="px-5 lg:px-40">
+  <app-latest-products/>
+  <app-best-seller-products/>
+</div>

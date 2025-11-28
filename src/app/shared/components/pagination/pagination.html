@@ -1,0 +1,19 @@
+<z-pagination-content class="flex justify-center">
+  <z-pagination-item [class.invisible]="currentPage() === 1">
+    <z-pagination-previous (click)="goToPrevious()"/>
+  </z-pagination-item>
+
+  @for (page of pages(); track page) {
+    <z-pagination-item>
+      <z-pagination-button [zActive]="page === currentPage()"
+                           zSize="lg"
+                           (click)="goToPage(page)">
+        {{ page }}
+      </z-pagination-button>
+    </z-pagination-item>
+  }
+
+  <z-pagination-item [class.invisible]="currentPage() === pages().length">
+    <z-pagination-next (click)="goToNext()"/>
+  </z-pagination-item>
+</z-pagination-content>

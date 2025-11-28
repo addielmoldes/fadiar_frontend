@@ -1,0 +1,12 @@
+z-accordion-item {
+  border: 1px solid var(--border);
+
+  ::ng-deep button:hover {
+    text-decoration: none;
+  }
+
+  ::ng-deep button {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}

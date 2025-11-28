@@ -1,0 +1,148 @@
+<div>
+  <small class="text-muted">
+    <a href="/">Home</a>
+    &minus;
+  </small>
+  <small class="text-muted">
+    <a href="products/">Carrito de compras</a>
+    &minus;
+  </small>
+  <small class="font-bold">Datos de pago</small>
+</div>
+
+<h3 class="text-2xl font-bold mb-3">Datos de pago</h3>
+
+<app-purchase-stepper [active]="3"/>
+
+<div class="grid lg:grid-cols-4 gap-10">
+  <div>
+    <h4 class="font-bold">PRODUCTOS</h4>
+    <hr class="mb-3">
+
+    <div class="flex flex-col gap-5">
+      @for (product of products(); track product.id) {
+        <app-shopping-cart-product [product]="product" [locked]="true"/>
+      }
+    </div>
+  </div>
+
+  <div>
+    <h4 class="font-bold">DATOS DE PAGO</h4>
+    <hr class="mb-3">
+
+    <div class="flex flex-col gap-3 mb-5">
+      <div class="text-sm text-muted-foreground px-3">
+        Método de pago: <span class="text-primary">Tarjeta de crédito o débito</span>
+      </div>
+
+      <div class="text-sm bg-slate-100 px-3 py-0.5 font-medium">Datos del beneficiario</div>
+      <div class="flex flex-col gap-3 px-3">
+        <div class="text-sm text-muted-foreground">
+          Nombre: <span class="text-primary">Julio</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Apellidos: <span class="text-primary">Almaguer Adán</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Teléfono: <span class="text-primary">+53 56729455</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Correo electrónico: <span class="text-primary">julioaa02&#64;gmail.com</span>
+        </div>
+      </div>
+
+      <div class="text-sm bg-slate-100 px-3 py-0.5 font-medium">Dirección de entrega</div>
+      <div class="px-3">
+        <div class="text-sm text-muted-foreground">
+          Dirección: <span class="text-primary">Calle Sol #815 entre 1ra y 3ra. Cerro, La Habana</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="m-2">
+
+    <button z-button zType="ghost" class="text-accent bg-background hover:bg-slate-100">Editar datos de pago</button>
+  </div>
+
+  <div>
+    <h4 class="font-bold">DATOS DE ENTREGA</h4>
+    <hr class="mb-3">
+
+    <div class="flex flex-col gap-3 mb-5">
+      <div class="text-sm text-muted-foreground px-3">
+        Método de entrega: <span class="text-primary">Domicilio</span>
+      </div>
+
+      <div class="text-sm bg-slate-100 px-3 py-0.5 font-medium">Datos del beneficiario</div>
+      <div class="flex flex-col gap-3 px-3">
+        <div class="text-sm text-muted-foreground">
+          Nombre: <span class="text-primary">Julio</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Apellidos: <span class="text-primary">Almaguer Adán</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Teléfono: <span class="text-primary">+53 56729455</span>
+        </div>
+
+        <div class="text-sm text-muted-foreground">
+          Correo electrónico: <span class="text-primary">julioaa02&#64;gmail.com</span>
+        </div>
+      </div>
+
+      <div class="text-sm bg-slate-100 px-3 py-0.5 font-medium">Dirección de entrega</div>
+      <div class="px-3">
+        <div class="text-sm text-muted-foreground">
+          Dirección: <span class="text-primary">Calle Sol #815 entre 1ra y 3ra. Cerro, La Habana</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="m-2">
+
+    <button z-button zType="ghost" class="text-accent bg-background hover:bg-slate-100">Editar datos de pago</button>
+  </div>
+
+  <div>
+    <h4 class="font-bold">IMPORTE</h4>
+    <hr class="mb-3">
+
+    <div class="rounded-2xl overflow-hidden mb-5">
+      <table class="w-full">
+        <tbody>
+        <tr class="bg-slate-100">
+          <td class="p-4 text-sm">Subtotal:</td>
+          <td class="p-4 text-right">$ 0 USD</td>
+        </tr>
+        <tr class="bg-slate-100">
+          <td class="p-4 text-sm">Comisión por forma de pago:</td>
+          <td class="p-4 text-right">$ 0 USD</td>
+        </tr>
+        <tr class="bg-slate-100">
+          <td class="p-4 text-sm">Costo de envío:</td>
+          <td class="p-4 text-right">$ 0 USD</td>
+        </tr>
+        <tr class="bg-slate-200">
+          <td class="p-4 font-bold text-xl">Total</td>
+          <td class="p-4 text-right text-xl">
+            <span class="font-bold">$ 0</span> USD
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex gap-3">
+      <button z-button type="button" (click)="changeStep.emit(2)" zType="outline"
+              class="basis-1/2 border-primary py-6 rounded-xl font-bold hover:bg-slate-100">
+        Atrás
+      </button>
+      <button z-button type="button" class="basis-1/2 py-6 rounded-xl font-bold">Continuar</button>
+    </div>
+  </div>
+</div>

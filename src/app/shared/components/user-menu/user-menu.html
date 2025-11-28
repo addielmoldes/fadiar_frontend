@@ -1,0 +1,35 @@
+<div z-menu zPlacement="bottomRight" [zMenuTriggerFor]="userMenu"
+     class="hover:bg-slate-100 p-2.5 rounded-[50%] h-fit">
+  <i-lucide [name]="CircleUserRound"/>
+</div>
+
+<ng-template #userMenu>
+  <div z-menu-content>
+    @if (isUserAuthenticated()) {
+      <a routerLink="/profile"
+         z-menu-item
+         class="hover:bg-slate-100! focus:bg-slate-100 focus:text-primary text-muted-foreground font-medium flex gap-2">
+        <span><i-lucide [name]="CircleUserRound"/></span>
+        <span>Perfil</span>
+      </a>
+      <a routerLink="/orders"
+         z-menu-item
+         class="hover:bg-slate-100! focus:bg-slate-100 focus:text-primary text-muted-foreground font-medium flex gap-2">
+        <span><i-lucide [name]="ShoppingBag"/></span>
+        <span>Mis Pedidos</span>
+      </a>
+      <button z-menu-item
+              class="hover:bg-slate-100! focus:bg-slate-100 flex gap-2 text-destructive focus:text-destructive!">
+        <span><i-lucide [name]="LogOut"/></span>
+        <span>Cerrar Sesión</span>
+      </button>
+    } @else {
+      <button z-menu-item
+              (click)="login()"
+              class="hover:bg-slate-100! focus:bg-slate-100 focus:text-primary text-muted-foreground font-medium flex gap-2">
+        <span><i-lucide [name]="LogIn"/></span>
+        <span>Iniciar Sesión</span>
+      </button>
+    }
+  </div>
+</ng-template>

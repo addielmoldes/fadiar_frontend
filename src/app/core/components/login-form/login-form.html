@@ -1,0 +1,43 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h3 class="font-bold text-2xl mb-10 text-center">Iniciar sesión</h3>
+  <div class="flex flex-col gap-5 mb-5">
+    <z-form-field>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="username"
+               placeholder="Usuario"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (username.hasError('required') && username.touched) {
+        <z-form-message zType="error">Este campo es requerido</z-form-message>
+      }
+    </z-form-field>
+
+    <z-form-field>
+      <z-form-control>
+        <input class="bg-slate-100 px-3 rounded-md"
+               formControlName="password"
+               placeholder="Contraseña"
+               type="password"
+               z-input
+               zBorderless>
+      </z-form-control>
+      @if (password.hasError('required') && password.touched) {
+        <z-form-message zType="error">Este campo es requerido</z-form-message>
+      }
+    </z-form-field>
+  </div>
+
+  <div class="flex justify-between items-baseline">
+    <a href="#" class="text-accent hover:bg-slate-100 p-1 rounded-md">Olvidé mi contraseña</a>
+    <button z-button [disabled]="loginForm.invalid" class="px-8 py-4 font-bold rounded-md">Entrar</button>
+  </div>
+</form>
+
+<hr class="my-5 w-1/2 text-center mx-auto">
+
+<div class="text-center">
+  ¿No tiene cuenta aún?
+  <a href="#" class="text-accent hover:bg-slate-100 p-1 rounded-md">Registrarse</a>
+</div>

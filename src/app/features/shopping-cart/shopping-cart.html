@@ -1,0 +1,19 @@
+<div class="px-5 lg:px-40 mb-10">
+
+  @switch (activeStep()) {
+    @case (0) {
+      <app-shopping-cart-form (changeStep)="changeStep($event)"/>
+    }
+    @case (1) {
+      <app-payment-data-form (changeStep)="changeStep($event)"/>
+    }
+    @case (2) {
+      <app-delivery-data-form (changeStep)="changeStep($event)"/>
+    }
+    @case (3) {
+      <app-payment-data (changeStep)="changeStep($event)"/>
+    }
+  }
+
+  <app-download-banner/>
+</div>

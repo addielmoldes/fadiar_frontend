@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6rem 10rem;
+  overflow: visible;
+}
+
+.hero-image {
+  position: absolute;
+  bottom: -80px;
+  right: 8rem;
+  width: auto;
+  object-fit: contain;
+  height: clamp(250px, 45vw, 450px);
+}
+
+.hero-tagline {
+  font-family: 'Just Me Again Down Here', cursive;
+  font-weight: 400;
+  position: absolute;
+  right: 27rem;
+  top: 2rem;
+}
+
+@media (max-width: 1600px) {
+  .hero {
+    padding: 2rem;
+    min-height: clamp(200px, 30vw, 400px);
+  }
+
+  .hero-tagline {
+    right: 20rem;
+  }
+
+  .hero-image {
+    right: 2rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .hero {
+    padding: 1rem;
+    min-height: clamp(200px, 30vw, 450px);
+  }
+
+  .hero-tagline {
+    right: 13rem;
+    top: 3rem
+  }
+
+  .hero-image {
+    right: 1rem;
+    height: clamp(250px, 35vw, 450px);
+  }
+}
+
+@media (max-width: 750px) {
+  .hero {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    min-height: 450px;
+  }
+
+  .hero-tagline {
+    top: 15rem;
+    left: 2rem;
+    right: 0;
+    font-size: 2rem;
+  }
+
+  .hero-image {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+  }
+}

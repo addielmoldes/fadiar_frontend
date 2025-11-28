@@ -1,0 +1,81 @@
+<!--<div class="lg:flex gap-5 lg:pl-5">-->
+<div class="grid lg:grid-cols-10 gap-5 lg:pl-5">
+<!--  <section class="basis-4/6 hidden lg:block">-->
+  <section class="lg:col-span-2 hidden lg:block">
+    <z-accordion zType="multiple" class="gap-4" [zDefaultValue]="['item-categories', 'item-price', 'item-makes', 'item-others']">
+      <z-accordion-item zTitle="Categorías" zValue="item-categories"
+                        class="bg-slate-100 border-none rounded-xl px-5 py-2">
+        @for (cateogory of filterCategories; track $index) {
+          <div [class.mb-5]="!$last">
+            <span z-checkbox class="text-muted-foreground">{{ cateogory }}</span>
+          </div>
+        }
+      </z-accordion-item>
+
+      <z-accordion-item zTitle="Precio" zValue="item-price" class="bg-slate-100 border-none rounded-xl px-5 py-2">
+        <div class="flex w-full items-center justify-center p-3">
+          <z-slider/>
+        </div>
+
+        <!--        <div class="flex justify-between">-->
+        <!--          <input z-input type="number">-->
+        <!--          <input z-input type="number">-->
+        <!--        </div>-->
+      </z-accordion-item>
+
+      <z-accordion-item zTitle="Marcas" zValue="item-makes" class="bg-slate-100 border-none rounded-xl px-5 py-2">
+        @for (make of filterMakes; track $index) {
+          <div [class.mb-5]="!$last">
+            <span z-checkbox class="text-muted-foreground">{{ make }}</span>
+          </div>
+        }
+      </z-accordion-item>
+
+      <z-accordion-item zTitle="Relevantes" zValue="item-others" class="bg-slate-100 border-none rounded-xl px-5 py-2">
+        <div class="mb-5">
+          <span z-radio name="others" value="offers" class="text-muted-foreground">Ofertas</span>
+        </div>
+        <div class="mb-5">
+          <span z-radio name="others" value="best-sellers" class="text-muted-foreground">Más vendidos</span>
+        </div>
+        <div>
+          <span z-radio name="others" value="soon" class="text-muted-foreground">Proximamente</span>
+        </div>
+      </z-accordion-item>
+
+    </z-accordion>
+  </section>
+
+  <section class="lg:col-span-8">
+    <app-hero/>
+
+    <div class="mt-10 py-10 px-3 lg:pr-20 xl:pr-40">
+      <div class="flex justify-between">
+        <div>
+          <h3 class="text-2xl text-accent font-bold mb-2">Productos</h3>
+          <h4 class="font-bold text-xl">
+            Todos los Productos <small class="text-muted font-light ml-5">{{ products().length }} productos</small>
+          </h4>
+        </div>
+        <div class="p-1.5 bg-slate-100 h-fit rounded lg:hidden">
+          <i-lucide [name]="Funnel"/>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 py-5 gap-3">
+        @for (product of products(); track product.id) {
+          <app-product [product]="product"/>
+        }
+      </div>
+
+      <app-pagination/>
+    </div>
+  </section>
+</div>
+
+<app-hero-2/>
+
+<div class="px-5 lg:px-40">
+  <app-latest-products/>
+</div>
+

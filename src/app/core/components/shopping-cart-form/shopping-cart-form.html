@@ -1,0 +1,126 @@
+<div>
+  <small class="text-muted">
+    <a href="/">Home</a>
+    &minus;
+  </small>
+  <small class="font-bold">Carrito de Compras</small>
+</div>
+
+<h3 class="text-2xl font-bold mb-3">Carrito</h3>
+
+<app-purchase-stepper [active]="0"/>
+
+<div class="grid md:grid-cols-2 gap-10">
+  <div class="flex flex-col gap-5 items-stretch">
+    @for (product of products(); track product.id) {
+      <app-shopping-cart-product [product]="product"/>
+    }
+  </div>
+
+  <div>
+    <div class="flex justify-between">
+      <h4 class="font-bold mb-3">IMPORTE</h4>
+    </div>
+
+    <table class="w-full text-muted-foreground mb-5">
+      <tbody>
+      <tr class="border-t">
+        <td class="p-3">Subtotal</td>
+        <td class="text-right p-3">$ 0 USD</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="font-bold mb-10">Usuario</div>
+
+    <form class="mb-10">
+      <div class="grid md:grid-cols-2 items-baseline gap-5 mb-10">
+        <z-form-field>
+          <label z-form-label zRequired for="phone-field">Teléfono</label>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   id="phone-field"
+                   placeholder="Teléfono"
+                   type="tel"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <label z-form-label zRequired for="identity-card-field">Carnet de Identidad</label>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   id="identity-card-field"
+                   placeholder="Carnet de Identidad"
+                   type="tel"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <label z-form-label zRequired for="province-field">Provincia</label>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   id="province-field"
+                   placeholder="Carnet de Identidad"
+                   type="tel"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <label z-form-label zRequired for="municipality-field">Municipio</label>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   id="municipality-field"
+                   placeholder="Carnet de Identidad"
+                   type="tel"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field class="col-span-2">
+          <z-form-control>
+            <div class="flex items-center space-x-2">
+              <z-checkbox id="delivery-field"/>
+              <label z-form-label class="text-muted-foreground" for="delivery-field">
+                ¿Necesitas entrega a domicilio? <small class="text-accent">(Disponible solo en La Habana)</small>
+              </label>
+            </div>
+          </z-form-control>
+        </z-form-field>
+      </div>
+
+      <div class="flex justify-between">
+        <h4 class="font-bold mb-3">RESUMEN DEL PEDIDO</h4>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden mb-10">
+        <table class="w-full">
+          <tbody>
+          <tr class="bg-slate-100">
+            <td class="p-4">Subtotal</td>
+            <td class="p-4 text-right">$ 0 USD</td>
+          </tr>
+          <tr class="bg-slate-200">
+            <td class="p-4 font-bold">Total a pagar</td>
+            <td class="p-4 text-right text-xl">
+              <span class="font-bold">$ 0</span> USD
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex justify-center">
+        <button z-button type="button" (click)="changeStep.emit(1)" class="basis-1/3 font-bold py-6 rounded-xl">
+          Confirmar Orden
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

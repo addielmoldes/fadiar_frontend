@@ -1,0 +1,46 @@
+<div class="flex h-full justify-between bg-card gap-3 border rounded-2xl p-3">
+  <div class="basis-1/2 flex items-center justify-center overflow-hidden max-h-[200px]">
+    <img [ngSrc]="`${apiUrl}/${product().img}`" class="w-full h-full object-contain rounded-md" alt="product_image"
+         width="100" height="100">
+  </div>
+
+  <div class="basis-1/2 flex flex-col justify-between">
+    <!-- Product name -->
+    <a [routerLink]="`/products/${product().id}`">
+      <h4 class="font-bold truncate text-ellipsis" [title]="product().name">
+        {{ product().name }}
+      </h4>
+    </a>
+
+    <!-- Make -->
+    <div class="mb-2">{{ product().brand }}</div>
+
+    <!-- Price -->
+    <div class="mb-3 text-xl">
+      <span class="font-bold">$ {{ product().price }}</span>
+      {{ product().currency.currency }}
+    </div>
+
+    @if (!locked()) {
+      <div class="flex justify-between items-center justify-self-end">
+        <div class="border rounded-[10px] flex">
+          <z-button zType="ghost" zSize="sm" class="text-accent px-1.5 hover:bg-background" (click)="subProduct()">
+            <i-lucide [name]="Minus"/>
+          </z-button>
+          <span class="font-bold text-center self-center px-1.5 border-l border-r">
+          {{ productAmount }}
+        </span>
+          <z-button zType="ghost" zSize="sm" class="text-accent px-1.5 hover:bg-background" (click)="addProduct()">
+            <i-lucide [name]="Plus"/>
+          </z-button>
+        </div>
+
+        <button z-button zType="outline" zSize="sm" class="border-primary hover:bg-slate-100">
+          <i-lucide [name]="Trash2"/>
+        </button>
+      </div>
+    } @else {
+      <div class="text-muted-foreground justify-self-end">Cantidad 1</div>
+    }
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<header>
+  <nav class="flex justify-around lg:px-40 gap-52 p-4 sticky top-10 w-full bg-background z-10">
+    <a routerLink="/" class="hidden lg:block">
+      <img ngSrc="assets/brand-logo-1.png" width="146" height="40" alt="brand_logo">
+    </a>
+
+    <div z-menu [zMenuTriggerFor]="navigation"
+         class="lg:hidden p-2.5 h-fit">
+      <i-lucide [name]="Menu"/>
+    </div>
+    <ng-template #navigation>
+      <div z-menu-content class="w-72 backdrop-opacity-70">
+        <div z-menu-item class="flex justify-between border-b mb-7 rounded-none items-center hover:bg-background focus:bg-background active:bg-background py-7">
+          <a routerLink="/">
+            <img ngSrc="assets/brand-logo-1.png" width="100" height="20" alt="brand_logo">
+          </a>
+
+          <div>
+            <i-lucide [name]="X"/>
+          </div>
+        </div>
+        @for (item of navigationMenu; track $index) {
+          <a [routerLink]="item.path" z-menu-item [zInset]="true" class="hover:bg-slate-100! focus:bg-slate-100 mb-7">
+            {{ item.title }}
+          </a>
+        }
+      </div>
+    </ng-template>
+
+    <div class="grow hidden lg:block">
+      <div class="relative">
+        <input z-input zBorderless class="border-b border-b-primary pl-2 rounded-none mb-3" type="search" name="search"
+               id="search"
+               placeholder="Buscar producto">
+        <div class="absolute bottom-2 right-2">
+          <i-lucide [name]="Search"/>
+        </div>
+      </div>
+      <ul class="lg:flex justify-around text-muted-foreground hidden">
+        @for (route of navigationMenu; track $index) {
+          <li>
+            <a [routerLink]="route.path" routerLinkActive="text-primary font-bold"
+               [routerLinkActiveOptions]="{exact: true}">{{ route.title }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex gap-5">
+      <a routerLink="/shopping-cart" class="hover:bg-slate-100 p-2.5 rounded-[50%] h-fit">
+        <i-lucide [name]="ShoppingCart"/>
+      </a>
+      <app-user-menu/>
+    </div>
+  </nav>
+</header>

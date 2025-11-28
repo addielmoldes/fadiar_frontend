@@ -1,0 +1,12 @@
+<div class="py-10">
+  <h5 class="font-bold">No pierdas la Oportunidad!</h5>
+  <h4 class="font-bold text-accent text-xl mb-4">Nuestras Ofertas</h4>
+
+  <div class="bento-grid">
+    @for (product of ourProducts(); track product.id) {
+      <app-product [class]="`${bentoSettings[$index] === 'h' ? 'bento-h' : 'bento-v'}`"
+                   [layout]="bentoSettings[$index] === 'h' ? 'horizontal' : 'vertical'"
+                   [product]="product"/>
+    }
+  </div>
+</div>

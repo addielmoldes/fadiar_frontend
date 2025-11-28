@@ -1,0 +1,25 @@
+<div class="px-5 lg:px-80 mb-10">
+  <h3 class="text-2xl font-bold">Mi Perfil</h3>
+  <div class="text-muted-foreground text-sm mb-10">
+    Hola {{ userInfo.person.name }}, aquí puedes gestionar y configurar tu cuenta
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="flex flex-col items-center">
+      <h4 class="font-bold mb-5">Avatar</h4>
+      <div class="relative rounded-full w-[100px] h-[100px]">
+        <img [ngSrc]="`${apiUrl}/${userInfo.user.img}`" alt="user-avatar" fill class="object-cover rounded-full">
+        <i-lucide [name]="RefreshCcw"
+                  class="absolute bottom-0 right-0 text-primary-foreground bg-amber-500 rounded-full"/>
+      </div>
+    </div>
+
+    <div class="md:col-span-2">
+      <app-user-data-form/>
+      <app-user-address-form/>
+      <app-user-password-form/>
+    </div>
+  </div>
+
+  <app-download-banner/>
+</div>

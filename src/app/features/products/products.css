@@ -1,0 +1,30 @@
+z-accordion-item {
+  border: 1px solid var(--border);
+
+  ::ng-deep button:hover {
+    text-decoration: none;
+  }
+
+  ::ng-deep button {
+    font-weight: 700;
+  }
+}
+
+z-slider {
+  ::ng-deep z-slider-range {
+    background-color: var(--color-gray-100);
+  }
+}
+
+input[type="number"] {
+  ::before {
+    content: 'Min.';
+  }
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,103 @@
+<div class="px-5 lg:px-40 mb-10">
+  <div>
+    <small class="text-muted">
+      <a href="/">Home</a>
+      &minus;
+    </small>
+    <small class="text-muted">
+      <a href="products/">Productos</a>
+      &minus;
+    </small>
+    <small class="font-bold">{{ product().categoria.name }}</small>
+  </div>
+
+  <h3 class="text-2xl font-bold mb-3">Detalles del producto</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div>
+      <div class="mb-5">
+        <img [ngSrc]="`${apiUrl}/${product().img}`" alt="product_image" width="500" height="500">
+      </div>
+
+      <div class="flex justify-between md:justify-start gap-3">
+        @for (imageUrl of []; track $index) {
+          <div class="border rounded-md basis-1/3 md:basis-auto">
+            <img [ngSrc]="imageUrl" class="" alt="other_image_1" width="100" height="100"
+                 (click)="updateSelectedImage(imageUrl)">
+          </div>
+        }
+      </div>
+    </div>
+
+    <div>
+      <small class="text-muted-foreground">{{ product().categoria.name }}</small>
+      <h3 class="text-2xl font-bold">{{ product().name }}</h3>
+      <h4 class="text-xl mb-3">{{ product().brand }}</h4>
+      <div class="text-muted-foreground mb-3">{{ product().description }}</div>
+
+      <div class="text-xl font-bold text-accent mb-3">
+        @if (product().warranty) {
+          Garantía {{ product().warranty }} días
+        } @else {
+          Sin garantía
+        }
+      </div>
+
+      @let currentPrice = product().temporal_price || product().price;
+      <div class="flex gap-5 items-end mb-3 text-2xl">
+        <div>
+          <span class="font-bold">$ {{ currentPrice }}</span>
+          {{ product().currency.currency }}
+        </div>
+        @if (product().temporal_price) {
+          <div class="text-xl text-muted line-through">
+            <span class="font-bold">$ {{ product().price }}</span>
+            {{ product().currency.currency }}
+          </div>
+        }
+      </div>
+
+      <div class="flex justify-between items-center mb-10">
+        <div class="border rounded-[10px] flex">
+          <z-button zType="ghost" zSize="sm" class="text-accent px-1.5 hover:bg-background">
+            <i-lucide [name]="Minus"/>
+          </z-button>
+          <span class="font-bold text-center self-center px-1.5 border-l border-r">
+          {{ 0 }}
+        </span>
+          <z-button zType="ghost" zSize="sm" class="text-accent px-1.5 hover:bg-background">
+            <i-lucide [name]="Plus"/>
+          </z-button>
+        </div>
+
+        <z-button zType="outline" zSize="sm" class="border-primary hover:bg-slate-100">
+          <i-lucide [name]="ShoppingCart"/>
+        </z-button>
+      </div>
+
+      <z-accordion zDefaultValue="product-specs" class="gap-4">
+        <z-accordion-item zTitle="Propiedades" zValue="product-specs"
+                          class="bg-slate-100 border rounded-xl px-5 py-2">
+          <table class="text-muted-foreground w-full">
+            <tbody>
+              @for (spec of product().specs; track $index) {
+                <tr class="border-b">
+                  <td class="py-2">{{ spec.name }}</td>
+                  <td class="text-right">{{ spec.description }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </z-accordion-item>
+      </z-accordion>
+    </div>
+  </div>
+
+  <app-related-products/>
+</div>
+
+<app-hero-2/>
+
+<div class="px-5 lg:px-40">
+  <app-latest-products/>
+</div>

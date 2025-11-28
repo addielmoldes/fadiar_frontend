@@ -1,0 +1,160 @@
+<div>
+  <small class="text-muted">
+    <a href="/">Home</a>
+    &minus;
+  </small>
+  <small class="text-muted">
+    <a href="products/">Carrito de compras</a>
+    &minus;
+  </small>
+  <small class="font-bold">Datos de pago</small>
+</div>
+
+<h3 class="text-2xl font-bold mb-3">Datos de pago</h3>
+
+<app-purchase-stepper [active]="1"/>
+
+<form>
+  <div class="grid lg:grid-cols-4 gap-10">
+    <div>
+      <h4 class="font-bold mb-3">01 - Forma de pago</h4>
+
+      <z-form-field class="grid grid-rows-2 gap-3">
+        <z-form-control class="border rounded-md p-2">
+          <div class="flex space-x-2 mb-3">
+            <z-radio name="paymentForm" id="payment-form1-field" value="card"/>
+            <label z-form-label for="payment-form1-field" class="font-bold text-accent-foreground">
+              Tarjetas de crédito o débito <br>
+              <small class="text-sm text-muted-foreground font-normal">Comisión por forma de pago: 4%</small>
+            </label>
+          </div>
+          <div>
+            <img ngSrc="assets/cards.png" alt="cards" width="200" height="150">
+          </div>
+        </z-form-control>
+
+        <z-form-control class="border rounded-md p-2">
+          <div class="flex items-center space-x-2">
+            <z-radio name="paymentForm" id="payment-form2-field" value="tropipay"/>
+            <label z-form-label for="payment-form2-field" class="font-bold text-accent-foreground">
+              Saldo TropiPay
+            </label>
+          </div>
+        </z-form-control>
+      </z-form-field>
+    </div>
+
+    <div class="lg:col-span-2">
+      <div class="mb-3">
+        <h4 class="font-bold">02 - Datos del comprador</h4>
+        <small class="text-muted-foreground">Propietario de la cuenta desde donde se realiza la compra.</small>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-5">
+        <z-form-field>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   placeholder="Nombre"
+                   type="text"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   placeholder="Apellidos"
+                   type="text"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   inputmode="tel"
+                   placeholder="Teléfono"
+                   type="tel"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field>
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   inputmode="email"
+                   placeholder="Correo"
+                   type="email"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field class="col-span-2">
+          <z-form-control>
+            <input class="bg-slate-100 px-3 rounded-md"
+                   placeholder="Dirección"
+                   z-input
+                   zBorderless>
+          </z-form-control>
+        </z-form-field>
+
+        <z-form-field class="col-span-2">
+          <z-form-control>
+            <textarea class="bg-slate-100 p-3"
+                      placeholder="Nota"
+                      z-input
+                      zBorderless>
+            </textarea>
+          </z-form-control>
+        </z-form-field>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-bold">FORMA DE PAGO</h4>
+      <hr class="mb-3">
+
+      <div class="mb-5">
+        <img ngSrc="assets/mastercard.png" class="ml-auto" alt="mastercard" width="50" height="25">
+      </div>
+
+      <h4 class="font-bold">IMPORTE</h4>
+      <hr class="mb-3">
+
+      <div class="rounded-2xl overflow-hidden mb-5">
+        <table class="w-full">
+          <tbody>
+          <tr class="bg-slate-100">
+            <td class="p-4 text-sm">Subtotal:</td>
+            <td class="p-4 text-right">$ 0 USD</td>
+          </tr>
+          <tr class="bg-slate-100">
+            <td class="p-4 text-sm">Comisión por forma de pago:</td>
+            <td class="p-4 text-right">$ 0 USD</td>
+          </tr>
+          <tr class="bg-slate-200">
+            <td class="p-4 font-bold text-xl">Total</td>
+            <td class="p-4 text-right text-xl">
+              <span class="font-bold">$ 0</span> USD
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex gap-3">
+        <button z-button type="button" (click)="changeStep.emit(0)" zType="outline"
+                class="basis-1/2 border-primary py-6 rounded-xl font-bold hover:bg-slate-100">
+          Atrás
+        </button>
+        <button z-button type="button" (click)="changeStep.emit(2)" class="basis-1/2 py-6 rounded-xl font-bold">
+          Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

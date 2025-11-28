@@ -1,0 +1,25 @@
+z-accordion-item {
+  padding: 0;
+
+  ::ng-deep button[id*="accordion"] {
+    padding-inline: 16px;
+  }
+
+  ::ng-deep button:hover {
+    text-decoration: none;
+  }
+
+  &[data-state='open'] {
+    ::ng-deep button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    ::ng-deep div[id*='content'] {
+      padding-inline: 32px;
+      padding-block: 16px;
+    }
+  }
+}
